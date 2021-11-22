@@ -14,16 +14,30 @@
 
 syntax = "proto3";
 
-option go_package = "github.com/fudute/proto_idl/helloserice";
+option go_package = "github.com/fudute/helloservice";
 
-package helloserice;
+package helloservice;
 
 // The greeting service definition.
 service HelloService {
   // Sends a greeting
   rpc Hello (HelloRequest) returns (HelloReply) {}
+  rpc Delay (DelayReq) returns (DelayResp){}
+  rpc HelloAgain(HelloRequest) returns (HelloReply) {}
+  rpc MetaInfo(EmptyReq) returns (EmptyResp) {}
 }
 
+message EmptyReq {
+}
+message EmptyResp {
+}
+
+message DelayReq {
+  int64 seconds = 1;
+}
+
+message DelayResp {
+}
 // The request message containing the user's name.
 message HelloRequest {
   string name = 1;
